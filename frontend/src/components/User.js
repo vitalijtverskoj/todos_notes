@@ -2,6 +2,7 @@ import React from "react";
 
 
 const UserItem = ({user}) => {
+
     return (
         <tr>
             <td>
@@ -22,6 +23,7 @@ const UserItem = ({user}) => {
 
 
 const UserList = ({users}) => {
+
     return (
         <table>
             <th>

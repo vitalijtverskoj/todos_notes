@@ -1,7 +1,11 @@
 import React from "react";
 import logo from './logo.svg';
 import './App.css';
-import UserList from "./components/user";
+import UserList from "./components/User";
+import axios from "axios";
+import Menu from "./components/Menu";
+import Footer from "./components/Footer";
+
 
 class App extends React.Component {
 
@@ -13,37 +17,20 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const users = [
-        {
-            "username": "admin",
-            "first_name": "Vitalij",
-            "last_name": "Tverskoj",
-            "email": "vitalijtverskoj@gmail.com"
-        },
-        {
-            "username": "test_user_1",
-            "first_name": "Victor",
-            "last_name": "Vasilev",
-            "email": "victorvasilev@gmail.com"
-        },
-        {
-            "username": "test_user_2",
-            "first_name": "Svetlana",
-            "last_name": "Zilkina",
-            "email": "svetlanazilkina@gmail.com"
-        },
-    ]
-    this.setState(
-        {
-          'users':users
-        }
-    )
+      axios.get('http://127.0.0.1:8000/api/users/').then(response =>{
+
+         this.setState(
+        {'users':response.data}
+        )
+      }).catch(error => console.log(error))
   }
 
   render() {
     return (
         <div>
-          <UserList users={this.state.users} />
+            <Menu />
+            <UserList users={this.state.users} />
+            <Footer />
         </div>
     )
   }
