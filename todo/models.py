@@ -18,3 +18,7 @@ class Todo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
     deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        self.deleted = True
+        self.save()
