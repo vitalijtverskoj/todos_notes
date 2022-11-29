@@ -35,9 +35,9 @@ class App extends React.Component {
 
     logout() {
         this.set_token('')
-        this.setState({'users': []},()=> this.load_data())
-        this.setState({'projects': []},()=> this.load_data())
-        this.setState({'todos': []},()=> this.load_data())
+        this.setState({'users': []})
+        this.setState({'projects': []})
+        this.setState({'todos': []})
     }
 
     is_auth() {
@@ -66,7 +66,7 @@ class App extends React.Component {
 
     get_headers() {
         let headers = {
-            'Content-Type': 'applications/json'
+            'Content-Type': 'application/json'
         }
         if (this.is_auth()) {
             headers['Authorization'] = 'Token ' + this.state.token
