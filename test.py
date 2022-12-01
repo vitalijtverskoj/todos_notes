@@ -1,27 +1,27 @@
-import requests
-import time
-
-DOMAIN = 'http://127.0.0.1:8000'
-
-
-def timeout():
-    time.sleep(2)
-
-
-def get_url(url):
-    return f'{DOMAIN}{url}'
-
-
-timeout()
-
-# не авторизован
-response = requests.get(get_url('/api/users'))
-assert response.status_code == 401
-
-timeout()
-# базовая авторизация
-response = requests.get(get_url('/api/users/'), auth=('admin', 'biped090989'))
-assert response.status_code == 200
+# import requests
+# import time
+#
+# DOMAIN = 'http://127.0.0.1:8000'
+#
+#
+# def timeout():
+#     time.sleep(2)
+#
+#
+# def get_url(url):
+#     return f'{DOMAIN}{url}'
+#
+#
+# timeout()
+#
+# # не авторизован
+# response = requests.get(get_url('/api/users/'))
+# assert response.status_code == 401
+#
+# timeout()
+# # базовая авторизация
+# response = requests.get(get_url('/api/users/'), auth=('admin', 'biped090989'))
+# assert response.status_code == 200
 #
 # timeout()
 # # авторизация по токену
