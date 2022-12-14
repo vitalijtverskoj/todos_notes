@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const ProjectItem = ({project}) => {
+const ProjectItem = ({project, delete_project}) => {
 
     return (
         <tr>
@@ -17,12 +17,15 @@ const ProjectItem = ({project}) => {
             <td>
                 {project.users}
             </td>
+            <td>
+                <button onClick={()=> delete_project(project.id)} type='button'>Delete</button>
+            </td>
         </tr>
     )
 };
 
 
-const ProjectList = ({projects}) => {
+const ProjectList = ({projects, delete_project}) => {
 
     return (
         <table>
@@ -38,7 +41,9 @@ const ProjectList = ({projects}) => {
             <th>
                 USERS
             </th>
-            {projects.map((project_) => <ProjectItem project={project_} />)}
+            <td>
+            </td>
+            {projects.map((project_) => <ProjectItem project={project_} delete_project={delete_project}/>)}
         </table>
     )
 };
